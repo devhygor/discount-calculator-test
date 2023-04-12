@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado da Calculadora de Economia de Energia</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'calculadora/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Resultado da Calculadora de Economia de Energia</h1>
+        <h2>Economia Anual: R$ {{ annual_savings }}</h2>
+        <h2>Economia Mensal: R$ {{ monthly_savings }}</h2>
+        <h2>Desconto Aplicado: {{ applied_discount }}%</h2>
+        <h2>Cobertura: {{ coverage }}%</h2>
+    </div>
+</body>
+</html>

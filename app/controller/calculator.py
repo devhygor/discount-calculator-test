@@ -1,13 +1,51 @@
 def calculator(consumption: list, distributor_tax: float, tax_type: str) -> tuple:
     """
-    returns a tuple of floats contained anual savings, monthly savings, applied_discount and coverage
+    retorna uma tupla de floats contendo economia anual, economia mensal, desconto aplicado e cobertura
     """
     annual_savings = 0
     monthly_savings = 0
     applied_discount = 0
     coverage = 0
 
-    # your code here #
+    # calculando o consumo médio dos últimos 3 meses
+    average_consumption = sum(consumption) / len(consumption)
+
+    # determinação do desconto com base no consumo médio e tipo de imposto
+    if average_consumption < 10000:
+        if tax_type == "Residencial":
+            applied_discount = 0.18
+        elif tax_type == "Comercial":
+            applied_discount = 0.16
+        elif tax_type == "Industrial":
+            applied_discount = 0.12
+    elif average_consumption >= 10000 and average_consumption <= 20000:
+        if tax_type == "Residencial":
+            applied_discount = 0.22
+        elif tax_type == "Comercial":
+            applied_discount = 0.18
+        elif tax_type == "Industrial":
+            applied_discount = 0.15
+    elif average_consumption > 20000:
+        if tax_type == "Residencial":
+            applied_discount = 0.25
+        elif tax_type == "Comercial":
+            applied_discount = 0.22
+        elif tax_type == "Industrial":
+            applied_discount = 0.18
+
+    # cálculo da economia anual com base no consumo médio, imposto do distribuidor e desconto aplicado
+    annual_savings = (average_consumption * 12) * distributor_tax * (1 - applied_discount)
+
+    # calculando a economia mensal com base na economia anual
+    monthly_savings = annual_savings / 12
+
+    # determinação da cobertura com base no consumo médio
+    if average_consumption < 10000:
+        coverage = 0.9
+    elif average_consumption >= 10000 and average_consumption <= 20000:
+        coverage = 0.95
+    elif average_consumption > 20000:
+        coverage = 0.99
 
     return (
         round(annual_savings, 2),
