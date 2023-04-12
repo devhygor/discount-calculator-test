@@ -2,10 +2,10 @@ def calculator(consumption: list, distributor_tax: float, tax_type: str) -> tupl
     """
     retorna uma tupla de floats contendo economia anual, economia mensal, desconto aplicado e cobertura
     """
-    annual_savings = 0
-    monthly_savings = 0
-    applied_discount = 0
-    coverage = 0
+    # annual_savings = 0
+    # monthly_savings = 0
+    # applied_discount = 0
+    # coverage = 0
 
     # calculando o consumo médio dos últimos 3 meses
     average_consumption = sum(consumption) / len(consumption)
