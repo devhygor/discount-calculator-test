@@ -1,42 +1,50 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Calculadora de Economia de Energia</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'calculadora/style.css' %}">
+	<meta charset="utf-8">
+	<title>Calculadora de Descontos</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Calculadora de Economia de Energia</h1>
-        <form method="post" action="{% url 'resultado' %}">
-            {% csrf_token %}
-            <div class="input-container">
-                <label for="consumption-1">Consumo mês 1 (kWh):</label>
-                <input type="number" step="0.01" min="0" name="consumption-1" id="consumption-1" required>
-            </div>
-            <div class="input-container">
-                <label for="consumption-2">Consumo mês 2 (kWh):</label>
-                <input type="number" step="0.01" min="0" name="consumption-2" id="consumption-2" required>
-            </div>
-            <div class="input-container">
-                <label for="consumption-3">Consumo mês 3 (kWh):</label>
-                <input type="number" step="0.01" min="0" name="consumption-3" id="consumption-3" required>
-            </div>
-            <div class="input-container">
-                <label for="distributor-tax">Tarifa da distribuidora (R$/kWh):</label>
-                <input type="number" step="0.0001" min="0" name="distributor-tax" id="distributor-tax" required>
-            </div>
-            <div class="input-container">
-                <label for="tax-type">Tipo de tarifa:</label>
-                <select name="tax-type" id="tax-type" required>
-                    <option value="">Selecione uma opção</option>
-                    <option value="Residencial">Residencial</option>
-                    <option value="Comercial">Comercial</option>
-                    <option value="Industrial">Industrial</option>
-                </select>
-            </div>
-            <button type="submit" class="btn-calcular">Calcular</button>
-        </form>
-    </div>
+
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			<h1 class="mb-4">Calculadora de Descontos</h1>
+			<form method="post">
+				{% csrf_token %}
+				<div class="form-group">
+					<label for="consumption_0">Consumo Mês 1 (em kWh):</label>
+					<input type="number" step="0.01" min="0" id="consumption_0" name="consumption_0" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label for="consumption_1">Consumo Mês 2 (em kWh):</label>
+					<input type="number" step="0.01" min="0" id="consumption_1" name="consumption_1" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label for="consumption_2">Consumo Mês 3 (em kWh):</label>
+					<input type="number" step="0.01" min="0" id="consumption_2" name="consumption_2" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label for="distributor_tax">Imposto Distribuidora (em %):</label>
+					<input type="number" step="0.01" min="0" max="100" id="distributor_tax" name="distributor_tax" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label for="tax_type">Tipo de Taxa:</label>
+					<select name="tax_type" id="tax_type" class="form-control" required>
+						<option value="">Selecione o tipo de taxa</option>
+						<option value="residencial">Residencial</option>
+						<option value="comercial">Comercial</option>
+						<option value="industrial">Industrial</option>
+					</select>
+				</div>
+				<button type="submit" class="btn btn-primary">Calcular Desconto</button>
+			</form>
+		</div>
+	</div>
+</div>
+
 </body>
 </html>
